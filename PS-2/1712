@@ -1,0 +1,26 @@
+#include<iostream>
+#define ll long long
+using namespace std;
+ll power(ll base,ll exponent,ll mod){
+    ll ans=1;
+    base=base%mod;
+    exponent=exponent%(mod-1);
+    while(exponent>0){
+        if(exponent%2) ans*=base;
+        ans=ans%mod;
+        exponent/=2;
+        base=base*base;
+        base=base%mod;
+    }
+    return ans;
+}
+int main(){
+    ll t;
+    cin>>t;
+    while(t--){
+        ll a,b,c;
+        cin>>a>>b>>c;
+        ll exponent=power(b,c,1000000006);
+        cout<<power(a,exponent,1000000007)<<endl;
+    }
+}
